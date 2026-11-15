@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Joud Universe · 2026</title>
+    <!-- خط رقعة عربي عريق مع خطوط لاتينية سينمائية -->
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- خلفية النجوم والكون المتلألئة -->
+    <div id="stars-container"></div>
+    <div id="ambient-light"></div>
+
+    <!-- 0. الشاشة السينمائية السوداء (Intro) -->
+    <section id="screen-intro" class="screen active">
+        <div class="intro-content">
+            <h1 class="universe-title">ياجودي ياحلوه هالعمر</h1>
+            <p class="intro-quote">بين الف سطرن والف شعورن ماعرفت اوصفه</p>
+            <p class="intro-subquote">خبيت لك عالمن من كثر ما انك بقلبي ما وسعتك رساله ولا حكايه </p>
+            <p class="intro-subquote">ودك تشوفي وش سوى الشوق فيني هالشهرين ؟</p>
+            <button id="btn-enter-universe" class="btn-glow" style="margin-top: 30px;">يلا يا دلوعتي ادلخي عالمك ✦</button>
+    </section>
+
+    <!-- 1. الباب السري (Security) -->
+    <section id="screen-security" class="screen hidden">
+        <div class="glass-card center-box">
+           <div class="orb-icon">✦</div>
+            <h2 class="section-title">بوابتك تنتظر شفرتك ياجودي</h2>
+            
+            <!-- المرحلة الأولى: الرمز السرّي -->
+            <div id="step-passcode" class="security-step">
+                <p class="input-label"></p>سرنا الصغير:</p>
+                <input type="password" id="passcode-input" maxlength="8" placeholder="********" autocomplete="off">
+                <button id="btn-check-passcode" class="btn-glow"> افتحي لي دروبك يا عيوني</button>
+            </div>
+
+            <!-- المرحلة الثانية: سؤال الحب المصغر -->
+            <div id="step-love-check" class="security-step hidden">
+                <p class="input-label">وش هي الكلمه الي أقولها لك دايم ياعيوني؟</p>
+                <input type="text" id="love-answer-input" placeholder="اكتبي الإجابة هنا..." autocomplete="off">
+                <button id="btn-check-love" class="btn-glow"> هذا جوابي يا حلو</button>
+            </div>
+
+            <p id="security-error" class="error-msg"></p>
+        </div>
+    </section>
+
+    <!-- 2. عصرنا الكوني (Counter) -->
+    <section id="screen-counter" class="screen hidden">
+        <div class="glass-card center-box">
+            <h2 class="gold-title">ياجعل هالعمر ما يحلى الا بك</h2>
+            <p class="sub-title">من يوم دخلتي عمري والوقت معك له طعم ثاني يادلوعتي</p>
+             <p class="sub-title">ومن 4/6/2026 وكل ثانيه تمر تزيدني بك من الوله مقدار</p>
+             <p class="sub-title">وانا ما احسب الايام الي مضت انا احسب شكثر احبك بكل يوم يمر</p>
+            <div class="cosmic-counter">
+                <div class="counter-box"><span id="days">00</span><label>يوم</label></div>
+                <div class="counter-box"><span id="hours">00</span><label>ساعة</label></div>
+                <div class="counter-box"><span id="minutes">00</span><label>دقيقة</label></div>
+                <div class="counter-box"><span id="seconds">00</span><label>ثانية</label></div>
+            </div>
+
+            <button id="btn-to-universe" class="btn-glow btn-dusty-pink" style="animation: fadeInSmooth 1s ease forwards; opacity: 1; animation-delay: 2.2s; margin-top: 35px;">
+    تعالي اوريك كونك يا نور عيني ✦
+</button>
+
+
+        </div>
+    </section>
+
+    <!-- 3. الكون الرئيسي (The Joud Universe) -->
+    <section id="screen-universe" class="screen hidden">
+        <div class="universe-header">
+            <h2 class="gold-title">يا مرحبا باللي لها الكون كلّه</h2
+            <p class="sub-title">يا جودي، هالكون ما انخلق من نجومٍ وسما، انخلق من كثر ما أشوفك بعيوني بكل شيء</p>
+            <p class="sub-title">كل نجمة فيه وراها حكاية، وكل كوكب فيه يخبي لك شعور، وكل زاوية فيه فيها شيء منّي ومن ولهي بك</p>
+             <p class="sub-title">تعالي يا محبوبتي خلني أوريك عالمٍ ما سويته إلا لك، ويمكن تلقين فيه أشياء ما عرفت أقولها لك يالحكي </p>
+        </div>
+
+        <!-- النافذة الزجاجية للذكريات -->
+        <div id="memory-modal" class="modal hidden">
+            <div class="modal-glass">
+                <span class="close-modal" id="close-memory">&times;</span>
+                <h3 id="memory-title" class="gold-title"></h3>
+                <p id="memory-text" class="arabic-ruqaa"></p>
+            </div>
+        </div>
+
+         <button id="btn-to-universe" class="btn-glow btn-dusty-pink" style="animation: fadeInSmooth 1s ease forwards; opacity: 0; animation-delay: 2.2s; margin-top: 35px;">
+            
+        </button>
+
+        <button id="btn-to-letters" class="btn-glow float-bottom">يابعد هالكون انتي يادلوعتي✦</button>
+    </section>
+
+    <!-- 4. صندوق الـ 100 ظرف (100 Things I Never Want to Forget) -->
+    <section id="screen-letters" class="screen hidden">
+        <h2 class="gold-title">20 تفصيلة فيك ماودي العمر يخليني انساها</h2>
+        </div>
+
+        <div id="envelopes-grid" class="envelopes-container"></div>
+
+        <!-- نافذة عرض الظرف المفتوح -->
+        <!-- نافذة عرض الظرف المفتوح -->
+<div id="envelope-modal" class="modal hidden">
+    <div class="envelope-modal-content glass-card" style="text-align: center; position: relative; max-width: 550px;">
+        <span id="envelope-number-badge" class="badge" style="display: block; margin-bottom: 10px; color: var(--gold); font-size: 1.1rem;">#000</span>
+        
+        <!-- عنلافىوان الرسالة الذي يظهر أولاً -->
+        <h3 id="envelope-title-text" class="gold-title" style="font-size: 1.8rem; margin-bottom: 20px;"></h3>
+        
+        <!-- نص الرسالة الذي يُكتب حرفاً حرفاً -->
+        <p id="envelope-message-text" class="arabic-ruqaa" style="margin-bottom: 30px; font-size: 1.4rem; line-height: 2.3; min-height: 100px;"></p>
+        
+        <!-- زر الرجوع الواضح -->
+        <button id="btn-back-to-letters" class="btn-glow" style="padding: 10px 30px; font-size: 1.1rem;">الرجوع للظروف ↩</button>
+    </div>
+</div>
+
+        <button id="btn-to-voice" class="btn-glow float-bottom"> تعالي يادلوعتي خبيت لك حنيني بصوتي</button>
+    </section>
+
+    <!-- 5. متحف الصوت (Voice Museum) -->
+    <section id="screen-voice" class="screen hidden">
+        <h2 class="gold-title">متحف صوت جودي 🎙️</h2>
+        <p class="sub-title">متحف صغير من صوتي خبيت لك بكل وحده منها حضنن ماتوصله المسافات</p>
+
+        <div class="museum-rooms-grid">
+            <div class="museum-room" data-audio="miss.mp3" data-title="يوم تشتاقي لي" data-intro="إذا مر عليك يوم حسّيتي فيه إن المسافة أكبر من قدرتك على التحمل اسمعيني..">
+                <div class="door-frame">🚪</div>
+                <h4>إذا اشتقتي لي</h4>
+            </div>
+            <div class="museum-room" data-audio="upset.mp3" data-title="إذا زعلتي مني" data-intro="إذا زعلتي مني ورأيتِ الدنيا ضيقة، اسمعي نبرة آسفي وحبي لكِ..">
+                <div class="door-frame">🚪</div>
+                <h4>إذا زعلتي مني</h4>
+            </div>
+            <div class="museum-room" data-audio="beauty.mp3" data-title="إذا شكّيتي بجمالك" data-intro="إذا لمحتِ الشك يمر بعينيكِ لحظة واحدة، اسمعيني كيف أراكِ..">
+                <div class="door-frame">🚪</div>
+                <h4>إذا شكّيتي بجمالك</h4>
+            </div>
+            <div class="museum-room" data-audio="tired.mp3" data-title="إذا تعبتِ من الدنيا" data-intro="إذا أرهقتكِ الحياة، فلتكوني على يقين أن صدري ملاذكِ الأول والأخير..">
+                <div class="door-frame">🚪</div>
+                <h4>إذا تعبتي من الدنيا</h4>
+            </div>
+            <div class="museum-room" data-audio="need.mp3" data-title="إذا احتجتِ تسمعين صوتي" data-intro="بدون أسباب أو مناسبات، فقط لأن صوتي يحب أن يهمس لكِ..">
+                <div class="door-frame">🚪</div>
+                <h4>إذا احتجتي تسمعين صوتي</h4>
+            </div>
+            <div class="museum-room" data-audio="future10.mp3" data-title="إذا جاء يوم ميلادك بعد عشر سنوات" data-intro="رسالة عبر الزمن، من ريّان إلى جود بعد عقد من الحب..">
+                <div class="door-frame">🚪</div>
+                <h4>بعد عشر سنوات</h4>
+            </div>
+        </div>
+
+        <!-- مشغل الصوت السينمائي -->
+        <div id="voice-player-modal" class="modal hidden">
+            <div class="player-glass-card">
+                <span class="close-modal" id="close-player">&times;</span>
+                <h3 id="player-title" class="gold-title"></h3>
+                <p id="player-intro-text" class="arabic-ruqaa player-intro"></p>
+                
+                <div class="sound-wave-visualizer">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+
+                <div class="player-controls">
+                    <button id="btn-play-pause" class="btn-circle">▶</button>
+                    <button id="btn-replay" class="btn-circle">🔄</button>
+                </div>
+                <input type="range" id="audio-progress" value="0" min="0" max="100">
+                <p id="player-audio-status" class="player-audio-status" role="status" aria-live="polite"></p>
+                <audio id="museum-audio-element" preload="auto"></audio>
+            </div>
+        </div>
+
+   <button id="btn-to-future" class="btn-glow" style="margin-top: 30px;">بكرة لنا يارلو عنتي</button>
+    </section>
+
+  <!-- 6. المستقبل (Our Unwritten Future) -->
+    <section id="screen-future" class="screen hidden">
+        <div class="glass-card future-card" style="max-width: 650px; padding: 35px 25px; max-height: 80vh; overflow-y: auto;">
+            
+            <h2 class="gold-title" style="text-align: center; margin-bottom: 25px;">
+                ✦ حكايتنا اللي ما انكتبت ✦
+            </h2>
+
+            <div class="future-cards-container" style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- البطاقة الأولى: بيتنا -->
+                <div class="sub-glass-card" style="background: rgba(244, 182, 200, 0.03); border: 0.75px solid rgba(244, 182, 200, 0.2); border-radius: 14px; padding: 20px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+                    <h3 style="color: var(--champagne-gold); font-size: 1.1rem; margin-bottom: 10px; font-weight: 400;">1/ بيتنا 🏡</h3>
+                    <p style="line-height: 2.2; font-size: 0.95Rrem; color: rgba(252, 246, 248, 0.9); margin: 0;">
+                        بيت ما أدخله وأحس إني وصلت لمكان، أدخله وأحس إني وصلت لك. أصحى على ملامحك قبل لا تصحى الدنيا، وألقى صوتك يسبق قهوتك، وأقعد معك على تفاصيل ما لها قيمة عند أحد إلا عندي لأنك فيها، ونختلف على طعم القهوة وعلى وش نتعشّى وعلى أشياء صغيرة ما تستاهل الاختلاف ثم نضحك وننسى وش كان الخلاف.<br><br>
+                        أبي بيت إذا جاء الليل صارت درايشه تعرف انتظارنا، وإذا مرّ العمر من عند بابه عرف إننا عشنا فيه حب ما كان يبي من الدنيا إلا إننا نعيشها سوا.<br><br>
+                        أبيك في بيت ما يكون أجمل ما فيه أثاثه ولا اتّساعه، لا، أجمل ما فيه إنك فيه، وإنّي كل ما رجعت له رجعت لك.
+                    </p>
+                </div>
+
+                <!-- البطاقة الثانية: الأماكن اللي تنتظرنا -->
+                <div class="sub-glass-card" style="background: rgba(244, 182, 200, 0.03); border: 0.75px solid rgba(244, 182, 200, 0.2); border-radius: 14px; padding: 20px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+                    <h3 style="color: var(--champagne-gold); font-size: 1.1rem; margin-bottom: 10px; font-weight: 400;">2/ الأماكن اللي تنتظرنا 🗺️</h3>
+                    <p style="line-height: 2.2; font-size: 0.95rem; color: rgba(252, 246, 248, 0.9); margin: 0;">
+                        أبي أمشي معك في مدن ما تعرف أسماءنا، ونخلّيها تحفظ خطاوينا ونضيع في شوارع ما قد مريناها، ونتأخر عن مواعيدنا لأننا لقينا مكان حلو وما ودنا نروح منه. وأبي أصوّرك من غير ما تنتبهين وأحتفظ بضحكتك في صور يمكن ما تعجبك يومها بس بعد سنين بنفتحها ونضحك ونتذكّر كيف كنّا وكيف كبر الحلم معنا.<br><br>
+                        أبي لنا أماكن كل ما مر اسمها على بالنا ابتسمنا، ومو لأنها كانت أجمل مدن العالم، لكن لأنها شهدت علينا وحنا نحب بعض.<br><br>
+                        وأبي أكبر سفراتنا ما تكون بين بلد وبلد، أبيها بين عمرٍ وع عمر، وكل ما كبرنا نلقى لنا ذكرى جديدة تقول: هنا كنا سوا.
+                    </p>
+                </div>
+
+                <!-- البطاقة الثالثة: تفاصيل عمرنا -->
+                <div class="sub-glass-card" style="background: rgba(244, 182, 200, 0.03); border: 0.75px solid rgba(244, 182, 200, 0.2); border-radius: 14px; padding: 20px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+                    <h3 style="color: var(--champagne-gold); font-size: 1.1rem; margin-bottom: 10px; font-weight: 400;">3/ تفاصيل عمرنا ⏳</h3>
+                    <p style="line-height: 2.2; font-size: 0.95rem; color: rgba(252, 246, 248, 0.9); margin: 0;">
+                        أبي العمر معك ما يكون مجرد سنين نعدّها، أبيه ايام نعيشها ونخبّيها بقلوبنا. أبي سوالفك اللي تبدأ بموضوع وتنتهي بعشرة مواضيع، وصوتك اخر الليل يوم يغلبك النعاس ولا ودك تنهين السالفه، وأبي ضحكاتنا اللي ما يفهم سرّها أحد ومشاويرنا اللي ما لها غرض، وحتى لحظات الصمت اللي ما نحتاج فيها نقول شي لأن وجودنا جنب بعض يكفي.<br><br>
+                        وأبي أعرف وش يفرحك من نظرة وأحفظ تغيّر صوتك إذا تضايقتي، وأصير الشخص اللي ما تحتاجين ترتّبين كلامك قبله ولا تخفين تعبك عنه.<br><br>
+                        أبي نعيش عمر إذا سألونا وش أجمل أيّامه ما نحتار بأي يوم نختار، لأن كل يوم كان فيه أحدنا للثاني كان يستاهل ينحفظ.
+                    </p>
+                </div>
+
+                <!-- البطاقة الرابعة: أشياء ما لها آخر -->
+                <div class="sub-glass-card" style="background: rgba(244, 182, 200, 0.03); border: 0.75px solid rgba(244, 182, 200, 0.2); border-radius: 14px; padding: 20px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+                    <h3 style="color: var(--champagne-gold); font-size: 1.1rem; margin-bottom: 10px; font-weight: 400;">4/ أشياء ما لها آخر.. ♾️</h3>
+                    <p style="line-height: 2.2; font-size: 0.95rem; color: rgba(252, 246, 248, 0.9); margin: 0;">
+                        ما أبي لحكايتنا تاريخ نوقف عنده ولا أمنيه نقول بعدها اكتمل كل حاجه. أبي كل سنة تجي تكون بدايه لحاجه أجمل وكل يوم ميلاد نطفي شموعه سوا يكون شاهد إننا كبرنا بس ما شبعنا من بعض، وأبي أشوف ملامحك تتغيّر مع السنين وأظل أعرفك من بين ألف وجه وأظل أحبّك بأشياء جديده ما كنت أعرف إن قلبي يقدر يحبّها.<br><br>
+                        وأبي تمر علينا أيام نختلف فيها وأيام نتعب وأيام تضحك لنا الدنيا، لكن في كل مرة نلقى بعضنا من جديد بنفس الرغبة الاولى وبقلب تعلم إن الحب مو إنك تختار شخص مرة وحده، لا، الحب إنك تعرفه بكل فصوله وتظل تبيه.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- زر الانتقال للقسم التالي مع مسافة علوية فخمة -->
+            <button id="btn-to-quiz" class="btn-glow btn-dusty-pink" style="width: 100%; margin-top: 30px; text-align: center;">
+                يلا نشوف وش كثر منتبهة للتفاصيل الصغيره اللي أحبها فيك يا محبوبتي 
+            </button>
+
+        </div>
+    </section>
+    </section>
+
+    <!-- 7. الأشياء الصغيرة عنك (Interactive Quiz) -->
+    <section id="screen-quiz" class="screen hidden">
+        <div class="glass-card center-box">
+            <h2 class="gold-title">الأشياء الصغيرة عنك 💖</h2>
+            <p class="sub-title">اختبار تفاعلي يكشف لك أجزاء من رسالتي السرية</p>
+
+            <div id="quiz-container">
+                <p id="quiz-question" class="arabic-ruqaa question-text"></p>
+                <div id="quiz-options" class="options-grid"></div>
+            </div>
+
+            <div id="revealed-secret-msg" class="secret-revealed-box hidden arabic-ruqaa">
+                <p class="gold-text">دلوعتي انتي تحسبي إني أحفظ تفاصيلك؟ لا أنا ما أحفظها يا دلوعتي، أنا اعيش فيها </p>
+            </div>
+
+            <button id="btn-to-final" class="btn-glow hidden" style="margin-top: 30px;">وصلنا  لاخر  دروب  هالكون  واحلى  ما  فيه  الباقي</button>
+        </div>
+    </section>
+
+    <!-- 8. الرسالة النهائية السينمائية (Final Cinematic Letter) -->
+    <section id="screen-final" class="screen hidden">
+        <div class="final-letter-wrapper">
+            <div id="typing-final-letter" class="arabic-ruqaa final-text-content"></div>
+        </div>
+    </section><!-- المشهد الختامي: كون جود -->
+<section id="screen-finale" class="screen hidden">
+    <!-- اللحظة الأولى: الرسالة الأخيرة (ذروة المشئر العاطفي) -->
+    <div id="final-message-container" class="finale-step">
+        <div class="glass-card-finale">
+            <p id="typing-final-letter" class="finale-text"></p>
+            <button id="btn-proceed-to-fade" class="btn-glow mt-4">تابعي المسير</button>
+        </div>
+    </div>
+
+    <!-- اللحظة الثانية: اختفاء النجوم وتبقى نجمة "جود" -->
+    <div id="universe-fade-container" class="finale-step hidden">
+        <div class="lonely-star-wrapper">
+            <div class="pulsing-star-joud">جود</div>
+            <p class="fade-subtext">تخفت النجوم.. ويبقى أثرها الأخلد.</p>
+        </div>
+    </div>
+
+    <!-- اللحظة الثالثة: السطر الأخير والزر الأخير -->
+    <div id="final-outro-container" class="finale-step hidden">
+        <div class="outro-content">
+            <h2 class="outro-line">انتهى الكون اللي بنيته لك...</h2>
+            <h2 class="outro-line">بس حكايتنا؟</h2>
+            <h1 class="outro-line highlight-name">يا جود، هذي توّها تبدأ.</h1>
+            
+            <button id="btn-restart-universe" class="btn-royal-gold mt-6">
+                عيدي عيشة الكون يا دلوعتي ✦
+            </button>
+        </div>
+    </div>
+</section>
+
+
+    <!-- الأكواد البرمجية الموزعة -->
+    <script src="data/memories.js"></script>
+    <script src="data/letters.js"></script>
+    <script src="data/questions.js"></script>
+    
+    <script src="js/intro.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/universe.js"></script>
+    <script src="js/letters.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/future.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- ضع ملف موسيقى بيانو هادئ في مجلد assets/audio باسم ambient.mp3 -->
+<audio id="bg-ambient-music" src="assets/audio/ambient.mp3" loop></audio>
+</body>
+
+</html>
