@@ -294,6 +294,4 @@ if (btnToUniverse) {
             screenUniverse.classList.remove('hidden');
         }
     });
-}
-    }
 });
