@@ -656,3 +656,23 @@ body.dim-stars #particles-js {
     position: relative;
     z-index: 10;
 } 
+
+/* تسريع الأداء ومنع التعليق على الجوال */
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* تبسيط الـ blur للبطاقات بالجوال عشان ما يعلق */
+.glass-card, .sub-glass-card, .modal-glass {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    transform: translateZ(0); /* تفعيل تسريع كرت الشاشة Hardware Acceleration */
+}
+
+/* إيقاف الانميشن الثقيلة لو الجوال فيه وضع توفير طاقة أو بطيء */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
