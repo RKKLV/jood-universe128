@@ -278,13 +278,11 @@ window.addEventListener('deviceorientation', (event) => {
     const tiltX = event.gamma ? event.gamma * 0.4 : 0; // ميلان يمين/يسار
     const tiltY = event.beta ? (event.beta - 45) * 0.4 : 0; // ميلان أمام/خلف
     
-   const stars = document.getElementById('stars-container');
+    const stars = document.getElementById('stars-container');
     if (stars) {
         stars.style.transform = `translate(${tiltX}px, ${tiltY}px)`;
-    }
-});
-
-// كود الانتقال السلس من شاشة العداد إلى شاشة الكون الرئيسي
+   
+        // كود الانتقال من شاشة العداد إلى شاشة الكون الرئيسي
 const btnToUniverse = document.getElementById('btn-to-universe');
 if (btnToUniverse) {
     btnToUniverse.addEventListener('click', () => {
@@ -296,4 +294,6 @@ if (btnToUniverse) {
             screenUniverse.classList.remove('hidden');
         }
     });
+}
+    }
 });
