@@ -281,5 +281,32 @@ window.addEventListener('deviceorientation', (event) => {
     const stars = document.getElementById('stars-container');
     if (stars) {
         stars.style.transform = `translate(${tiltX}px, ${tiltY}px)`; 
+
+        const btnToUniverse = document.getElementById('btn-to-universe');
+if (btnToUniverse) {
+    btnToUniverse.addEventListener('click', () => {
+        const screenCounter = document.getElementById('screen-counter');
+        const screenUniverse = document.getElementById('screen-universe');
+        
+        if (screenCounter && screenUniverse) {
+            // تأثير خروج ناعم للشاشة الحالية
+            screenCounter.style.opacity = '0';
+            screenCounter.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                screenCounter.classList.add('hidden');
+                screenUniverse.classList.remove('hidden');
+                screenUniverse.style.opacity = '0';
+                screenUniverse.style.transition = 'opacity 0.8s ease';
+                
+                // تأثير دخول فخم للشاشة التالية
+                setTimeout(() => {
+                    screenUniverse.style.opacity = '1';
+                }, 50);
+            }, 500);
+        }
+    });
+}
+
     }
 });
