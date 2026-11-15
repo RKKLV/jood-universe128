@@ -281,5 +281,18 @@ window.addEventListener('deviceorientation', (event) => {
     const stars = document.getElementById('stars-container');
     if (stars) {
         stars.style.transform = `translate(${tiltX}px, ${tiltY}px)`;
+        // كود الانتقال من شاشة العداد إلى شاشة الكون الرئيسي
+const btnToUniverse = document.getElementById('btn-to-universe');
+if (btnToUniverse) {
+    btnToUniverse.addEventListener('click', () => {
+        const screenCounter = document.getElementById('screen-counter');
+        const screenUniverse = document.getElementById('screen-universe');
+        
+        if (screenCounter && screenUniverse) {
+            screenCounter.classList.add('hidden');
+            screenUniverse.classList.remove('hidden');
+        }
+    });
+}
     }
 });
